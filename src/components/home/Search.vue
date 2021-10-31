@@ -5,28 +5,26 @@
         <v-flex xs12>
           <v-layout align-center justify-center row wrap>
             <v-flex xs6>
-              <v-form>
-                <v-col class="text-right">
-                  <v-card-text>
-                    <v-autocomplete
-                      v-model="movie"
-                      dark
-                      :items="results"
-                      :search-input.sync="search"
-                      :loading="isLoading"
-                      color="white"
-                      hide-no-data
-                      hide-selected
-                      item-text="Description"
-                      item-value="API"
-                      label="Search for movies"
-                      placeholder="Start typing to Search"
-                      prepend-icon="mdi-magnify"
-                      return-object
-                    ></v-autocomplete>
-                  </v-card-text>
-                </v-col>
-              </v-form>
+              <v-col class="text-right">
+                <v-card-text>
+                  <v-autocomplete
+                    v-model="movie"
+                    dark
+                    :items="results"
+                    :search-input.sync="search"
+                    :loading="isLoading"
+                    color="white"
+                    hide-no-data
+                    hide-selected
+                    item-text="Description"
+                    item-value="API"
+                    label="Search for movies"
+                    placeholder="Start typing to Search"
+                    prepend-icon="mdi-magnify"
+                    return-object
+                  ></v-autocomplete>
+                </v-card-text>
+              </v-col>
             </v-flex>
           </v-layout>
         </v-flex>
