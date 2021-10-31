@@ -74,9 +74,10 @@ export default {
           .then((response) => {
             if (response.data.Response === 'True') {
               movieDetails.value = response.data;
-              var jsonVariable = {};
-              jsonVariable[response.data.Title] = response.data;
-              $store.commit('SET_STORE', jsonVariable);
+              const moviesStore = $store.getters.movies;
+
+              moviesStore[response.data.Title] = response.data;
+              $store.commit('SET_STORE', moviesStore);
             }
             isLoading.value = false;
           });
