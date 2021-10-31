@@ -18,7 +18,6 @@ export default {
 
     function setMovies(value) {
       movies.value = value;
-      console.log(movies.value);
     }
 
     return { movies, setMovies };

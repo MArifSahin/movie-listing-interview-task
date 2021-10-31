@@ -24,10 +24,6 @@
                       prepend-icon="mdi-magnify"
                       return-object
                     ></v-autocomplete>
-
-                    <v-btn v-if="movie" depressed @click="movies.value = []">
-                      CLEAR SEARCH
-                    </v-btn>
                   </v-card-text>
                 </v-col>
               </v-form>
@@ -44,14 +40,9 @@ import { ref, watch, computed } from '@vue/composition-api';
 import axios from 'axios';
 
 export default {
-  //   v-model="model"
-  // :items="results"
-
-  //   <v-spacer
-  //   ><v-btn v-if="model" depressed> CLEAR SEARCH </v-btn>
-  // </v-spacer>
   name: 'Search',
   props: ['setMovies'],
+
   setup(props) {
     const movies = ref([]);
     const search = ref('');
@@ -70,11 +61,9 @@ export default {
     }, 1500);
 
     function setSearchItem(value) {
+      movie.value = '';
       searchItem.value = value;
       axios
-        // .get(
-        //   `http://www.omdbapi.com/?s=${searchItem.value}&type=movie&y=2020&apikey=asdasd&`
-        // )
         .get(
           `http://www.omdbapi.com/?s=${searchItem.value}&type=movie&y=2020&apikey=f1be0110&`
         )
