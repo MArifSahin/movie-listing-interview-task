@@ -3,7 +3,6 @@
     absolute
     elevation="24"
     :src="require('@/assets/images/navigation.png')"
-    scroll-target="#scrolling-techniques-5"
     scroll-threshold="500"
   >
     <template v-slot:img="{ props }">

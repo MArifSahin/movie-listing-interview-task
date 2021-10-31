@@ -55,22 +55,32 @@ export default {
   name: 'MovieDetails.vue',
   props: ['movie'],
 
-  setup(props) {
+  setup(props, { root: { $store } }) {
     const movieDetails = ref({});
     const isLoading = ref(false);
 
     function getMovieDetails() {
       isLoading.value = true;
-      axios
-        .get(
-          `http://www.omdbapi.com/?t=${props.movie.Title}&type=movie&y=2020&apikey=f1be0110&`
-        )
-        .then((response) => {
-          if (response.data.Response === 'True') {
-            movieDetails.value = response.data;
-          }
-          isLoading.value = false;
-        });
+      if ($store.getters.movies[props.movie.Title]) {
+        console.log('retrieved from cache');
+        movieDetails.value = $store.getters.movies[props.movie.Title];
+        isLoading.value = false;
+      } else {
+        console.log('retrieved from api');
+        axios
+          .get(
+            `http://www.omdbapi.com/?t=${props.movie.Title}&type=movie&y=2020&apikey=f1be0110&`
+          )
+          .then((response) => {
+            if (response.data.Response === 'True') {
+              movieDetails.value = response.data;
+              var jsonVariable = {};
+              jsonVariable[response.data.Title] = response.data;
+              $store.commit('SET_STORE', jsonVariable);
+            }
+            isLoading.value = false;
+          });
+      }
     }
 
     return { movieDetails, isLoading, getMovieDetails };
