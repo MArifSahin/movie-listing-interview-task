@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <v-col v-for="n in 24" :key="n" cols="2">
+      <v-col v-for="movie in movies" :key="movie.title" cols="12" sm="6" md="4">
         <movie-card :movie="movie"></movie-card>
       </v-col>
     </v-row>

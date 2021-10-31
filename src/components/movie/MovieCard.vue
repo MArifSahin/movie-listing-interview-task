@@ -8,16 +8,13 @@
       ></v-progress-linear>
     </template>
 
-    <v-img
-      height="250"
-      src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-    ></v-img>
+    <v-img height="250" :src="movie.Poster"></v-img>
 
-    <v-card-title>Movie Name</v-card-title>
+    <v-card-title>{{ movie.Title }}</v-card-title>
 
     <v-card-text>
       <v-row>
-        <div class="grey--text ms-4">IMDB : 5</div>
+        <div class="grey--text ms-4">{{ movie.Year }}</div>
       </v-row>
     </v-card-text>
 
@@ -36,15 +33,5 @@ export default {
   name: 'MovieCard',
   props: ['movie'],
   components: { MovieDetailsDialog },
-
-  data: () => ({
-    loading: false,
-  }),
-
-  methods: {
-    details() {
-      setTimeout(() => (this.loading = false), 2000);
-    },
-  },
 };
 </script>
