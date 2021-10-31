@@ -2,9 +2,9 @@
   <v-parallax height="300" :src="require('@/assets/images/navigation.png')">
     <v-container fluid grid-list-xl>
       <v-layout justify-center row wrap>
-        <v-flex xs12>
+        <v-flex>
           <v-layout align-center justify-center row wrap>
-            <v-flex xs6>
+            <v-flex lg6 md8 xs12>
               <v-col>
                 <v-card-text>
                   <v-autocomplete
@@ -23,15 +23,15 @@
                     prepend-icon="mdi-magnify"
                     return-object
                   ></v-autocomplete>
+                  <v-alert v-show="errorMessageVisible" dark dense type="error">
+                    Movie not found!
+                  </v-alert>
                 </v-card-text>
               </v-col>
             </v-flex>
           </v-layout>
         </v-flex>
       </v-layout>
-      <v-alert v-show="errorMessageVisible" dark dense type="error">
-        Movie not found!
-      </v-alert>
     </v-container>
   </v-parallax>
 </template>
